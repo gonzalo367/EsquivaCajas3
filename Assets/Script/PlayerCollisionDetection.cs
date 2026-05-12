@@ -1,24 +1,19 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerCollisionDetection : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Caja"))
-        { Destroy(gameObject);
+        { 
+            Gamemanager gm = FindObjectOfType<Gamemanager>();
+            
+            if (gm != null) 
+            {
+                gm.DetenerReloj();
+            }
+
+            Destroy(gameObject);
         }
-        }
+    }
 }
